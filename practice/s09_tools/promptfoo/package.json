@@ -1,0 +1,12 @@
+{
+  "name": "bridgemarket-promptfoo",
+  "private": true,
+  "description": "LLM 평가와 안전 실전 보너스 2 · Promptfoo 회귀 검사 (모델 호출 없음)",
+  "scripts": {
+    "eval": "promptfoo eval -c promptfooconfig.yaml",
+    "view": "promptfoo view"
+  },
+  "devDependencies": {
+    "promptfoo": "0.125.1"
+  }
+}

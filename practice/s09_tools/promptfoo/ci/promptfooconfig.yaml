@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# PR 검사용 세트: 후보 응답(ci/candidates.json)만 채점합니다. 하나라도 실패하면 종료 코드가 0이 아니고, PR 검사가 실패로 표시됩니다.
+# 모델을 부르지 않습니다. 저장된 답으로 "검사 자체가 제대로 작동하는지"를 확인하는 단계입니다.
+description: 브릿지마켓 · PR 회귀 검사 (후보 응답)
+
+prompts:
+  - "{{reply}}"
+
+providers:
+  - id: echo
+    label: 후보 응답
+
+tests:
+  - path: file://../load_cases.py:generate_tests
+    config:
+      path: ci/candidates.json
+
+defaultTest:
+  assert:
+    - type: python
+      value: file://../assert_policy.py
+      metric: old_policy_as_current
+
+outputPath: ../results/pr.json
