@@ -2,7 +2,7 @@
 
   npx promptfoo eval      (먼저 실행. 결과가 results/check.json 에 저장됩니다)
   python3 compare.py
-  python3 compare.py --pr  PR 검사 결과(results/pr.json)의 사례별 판정과 이유만 보여 줍니다. CI가 실패했을 때 씁니다
+  python3 compare.py --pr  PR 검사 결과(results/pr.json)의 사례별 판정과 이유만 보여 줍니다. CI가 실패했을 때 씁니다(설명만 하므로 종료 코드 0)
 """
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ def pr() -> int:
         bad += not r["success"]
         print(f"{r['testCase']['vars']['case_id']:<5} {V[bool(r['success'])]}  {reason_of(r)}")
     print(f"후보 응답 {len(rows)}건 중 실패 {bad}건" + (" · 이 PR의 답은 고객에게 보낼 수 없습니다" if bad else ""))
-    return 1 if bad else 0
+    return 0   # 설명만 합니다. 통과 · 실패는 앞 단계(promptfoo eval)의 종료 코드가 정합니다
 
 
 def main() -> int:
