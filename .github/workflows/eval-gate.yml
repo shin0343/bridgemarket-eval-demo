@@ -25,3 +25,6 @@ jobs:
         run: npm ci
       - name: 회귀 검사 · 옛 정책을 현행처럼 안내했나 (API 호출 없음)
         run: npx promptfoo eval -c ci/promptfooconfig.yaml --no-cache --no-table
+      - name: 실패한 사례와 이유
+        if: failure()
+        run: python3 compare.py --pr

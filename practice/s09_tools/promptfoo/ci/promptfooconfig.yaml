@@ -21,4 +21,4 @@ defaultTest:
       value: file://../assert_policy.py
       metric: old_policy_as_current
 
-outputPath: ../results/pr.json
+outputPath: results/pr.json   # 실행한 폴더(promptfoo/) 기준

@@ -5,7 +5,7 @@
 
 from __future__ import annotations
 
-from common import find_old_policy, load_cases, short, stale_words
+from cases_lib import find_old_policy, load_cases, short, stale_words
 
 V = {"fail": "실패", "pass": "통과"}
 

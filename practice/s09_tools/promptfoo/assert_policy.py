@@ -11,7 +11,7 @@ import pathlib
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
-from common import find_old_policy, load_cases, stale_words  # noqa: E402
+from cases_lib import find_old_policy, load_cases, stale_words  # noqa: E402
 
 
 def passed(found_old_policy: bool) -> bool:
